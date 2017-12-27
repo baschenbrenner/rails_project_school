@@ -87,8 +87,16 @@ has many comments
 Course
 belongs to teacher
 has many students
+has many students, through enrollments
 has many essential learnings
 has many questions
+has many comments through questions
+
+
+Enrollments
+belongs to student
+belongs to course
+
 
 essential learnings
 belongs to course
@@ -96,7 +104,7 @@ belongs to course
 questions
 belongs to student
 belongs to course
-belongs to teacher, through student
+has many comments
 
 comment
 belongs to teacher
