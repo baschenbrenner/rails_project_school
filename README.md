@@ -90,4 +90,17 @@ has many students
 has many essential learnings
 has many questions
 
+essential learnings
+belongs to course
+
+questions
+belongs to student
+belongs to course
+belongs to teacher, through student
+
+comment
+belongs to teacher
+belongs to student
+belongs to question
+
 
