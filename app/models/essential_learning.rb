@@ -1,0 +1,2 @@
+class EssentialLearning < ApplicationRecord
+end
