@@ -112,3 +112,15 @@ belongs to student
 belongs to question
 
 
+
+
+for header class
+        <%= link_to "View All Classes, classes_path %> | 
+        <% if !user_signed_in? %> <%= link_to "sign in", new_user_session_path %> | <% end %> 
+        <% if user_signed_in? %> <%= "Signed in as #{current_user.email}" %> | <% end %> <br/>
+        <% if user_signed_in? %> <%= link_to "Sign out", destroy_user_session_path, method: "delete" %> <% end %>
+        <% if !user_signed_in? %> <%= link_to "Sign up", new_user_registration_path %> <% end %>
+       
+
+Once meeting_schedule_string is written - for class index and show page
+<%= "The class meets on #{@course.meeting_schedule_string}" %>

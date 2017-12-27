@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20171227185449) do
   end
 
   create_table "courses", force: :cascade do |t|
+    t.string "title"
     t.integer "teacher_id"
     t.string "catalog_number"
     t.string "room_number"

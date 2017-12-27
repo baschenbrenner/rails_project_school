@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  resources :classes, only: [:show, :index]
   root 'welcome#home', as: 'home'
   
 

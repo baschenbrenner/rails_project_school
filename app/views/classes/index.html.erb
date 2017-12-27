@@ -1,0 +1,10 @@
+<h1>Classes#index</h1>
+<p>Find me in app/views/classes/index.html.erb</p>
+
+<% @courses.each do |course| %>
+<p> The title of the course is: <%= course.title %> The instructor is <% course.teacher.preferred_name %>
+<%= "The catalog number is: #{course.catalog_number}" %>
+<%= "The room number the class meets in is: #{course.day_time_meeting}" %>
+</p>
+<% end %>
+

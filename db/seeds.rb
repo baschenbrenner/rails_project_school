@@ -11,8 +11,8 @@
 Student.create(first_name: "kasey", password: "password")
 Student.create(first_name: "emma", password: "password")
 Student.create(first_name: "john", password: "password")
-@course1=Course.new(catalog_number: "MAT123 AAM", room_number: "012", day_time_meeting: "MW 9:30AM - 11:20AM")
-@course2=Course.new(catalog_number: "BIO105 BF2", room_number: "P32", day_time_meeting: "TR 10:30AM - 12:20PM")
+@course1=Course.new(title: "Quantitative Reasoning", catalog_number: "MAT123 AAM", room_number: "012", day_time_meeting: "MW 9:30AM - 11:20AM")
+@course2=Course.new(title: "Anatomy and Physiology", catalog_number: "BIO105 BF2", room_number: "P32", day_time_meeting: "TR 10:30AM - 12:20PM")
 @course1.teacher = @teacher1
 @course2.teacher = @teacher2
 @course1.save
