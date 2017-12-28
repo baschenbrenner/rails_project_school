@@ -3,11 +3,8 @@ class SessionsController < ApplicationController
   end
   
   def create
-    binding.pry
-    @user = User.find_by(name: params[:user][:name])
-    return head(:forbidden) unless @user.authenticate(params[:user][:password])
-    session[:user_id] = @user.id 
-    redirect_to 'show'
+    user_authenticate
+    redirect_to courses_path
   end
   
   def show
@@ -15,4 +12,19 @@ class SessionsController < ApplicationController
   
   def destroy
   end
+  
+  private
+  
+  def user_authenticate
+        if user_type == "student"
+            @student = Student.find_by(email: params[:email])
+            return head(:forbidden) unless @student.authenticate(params[:password])
+            session[:user_id] = @student.id 
+        else
+            @teacher = Teacher.find_by(email: params[:email])
+            return head(:forbidden) unless @student.authenticate(params[:password])
+            session[:user_id] = teacher.id 
+        end
+  end
+    
 end
