@@ -8,7 +8,7 @@
 
 @teacher1 = Teacher.create(first_name: "ben", preferred_name: "Mr. Ben", password: "password")
 @teacher2 = Teacher.create(first_name: "jeff", preferred_name: "Professor Friend", password: "password")
-Student.create(first_name: "kasey", password: "password")
+Student.create(first_name: "kasey", last_name: "farley", password: "password")
 Student.create(first_name: "emma", password: "password")
 Student.create(first_name: "john", password: "password")
 @course1=Course.new(title: "Quantitative Reasoning", catalog_number: "MAT123 AAM", room_number: "012", day_time_meeting: "MW 9:30AM - 11:20AM")
