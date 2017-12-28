@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  
-  resources :classes, only: [:show, :index]
+  resources :teachers, only: [:show, :index]
+
+  resources :courses, only: [:show, :index]
   root 'welcome#home', as: 'home'
   
 
