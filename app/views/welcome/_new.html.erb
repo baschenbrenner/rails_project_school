@@ -1,8 +1,11 @@
    
   Email: <br/>
-  <input name=email><br/>
+  <%= f.text_field :email %>
+  <br/>
   Pasword: <br/>
-  <input type=password name=password><br/>
+  <%= f.password_field :password %>
+  <br/>
   Password Confirmation: <br/>
-  <input type=password name=password_confirmation><br/> 
-  <input type=submit value='Signup'>
+  <%= f.password_field :password_confirmation %>
+  
+ <%= f.submit %>

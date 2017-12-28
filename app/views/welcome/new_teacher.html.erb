@@ -1,5 +1,6 @@
-New Teacher Sign Up
+<h1>New Teacher Sign Up</h1>
 
-<%= form_tag ({controller: 'teachers', action: 'create', method: 'post'}) do %>
-<% render 'new' %>
+
+<%= form_for @teacher do |f|%>
+<% render partial: 'new', locals: {f: f} %>
 <% end %>

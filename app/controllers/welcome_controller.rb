@@ -7,4 +7,14 @@ class WelcomeController < ApplicationController
     @student = Student.new
   end
   
+  def students
+    @student = Student.new
+    render 'new_student'
+  end
+  
+  def teachers
+    @teacher = Teacher.new
+    render 'new_teacher'
+  end
+  
 end

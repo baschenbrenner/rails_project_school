@@ -1,6 +1,6 @@
 <nav class="header">
     <% if user_signed_in? %>
-    Signed In As: <%= current_user.preferred_name %>
+    Signed In: <%= current_user.email %>
     <%= link_to "Logout", logout_path, method: "POST" %>
     <% end %>
 </nav>
