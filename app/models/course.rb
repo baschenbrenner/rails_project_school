@@ -14,9 +14,9 @@ class Course < ApplicationRecord
     def meeting_schedule_string
         days = self.day_time_meeting.slice(0,2)
         if days == "MW"
-            string = "Monday and Wednesday at #{day_time_meeting.slice(4,18)}"
+            string = "Monday and Wednesday at #{day_time_meeting.slice(3,18)}"
         elsif days == "TR"
-            string = "Tuesday and Thursday at #{day_time_meeting.slice(4,18)}"
+            string = "Tuesday and Thursday at #{day_time_meeting.slice(3,18)}"
         elsif days == "TB"
             string = "To Be Determined"
         else
