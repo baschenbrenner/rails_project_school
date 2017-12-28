@@ -6,8 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@teacher1 = Teacher.create(first_name: "ben", password: "password")
-@teacher2 = Teacher.create(first_name: "jeff", password: "password")
+@teacher1 = Teacher.create(first_name: "ben", preferred_name: "Mr. Ben", password: "password")
+@teacher2 = Teacher.create(first_name: "jeff", preferred_name: "Professor Friend", password: "password")
 Student.create(first_name: "kasey", password: "password")
 Student.create(first_name: "emma", password: "password")
 Student.create(first_name: "john", password: "password")

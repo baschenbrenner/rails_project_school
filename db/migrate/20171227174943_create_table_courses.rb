@@ -2,6 +2,7 @@ class CreateTableCourses < ActiveRecord::Migration[5.1]
   def change
     create_table :courses do |t|
       t.string :title
+      t.text :description
       t.integer :teacher_id
       t.string :catalog_number
       t.string :room_number
