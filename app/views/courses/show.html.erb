@@ -1,7 +1,2 @@
 <h1><%= @course.title %></h1>
-
-<p>Course Description: <%= @course.description %></p>
-
-<p> This semester the course will be taught by <%= link_to @course.teacher_name, teacher_path(@course.teacher) %></p>
-
-
+<%= render(@course) %>
