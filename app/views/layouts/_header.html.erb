@@ -2,7 +2,10 @@
     <% if user_signed_in? %>
     Signed In: <%= current_user.email %>
     <%= link_to "Logout", logout_path, method: "POST" %>
+    <% else %>
+    <%= link_to "Home", home_path %>
     <% end %>
+    
 </nav>
 
   <% if flash[:notice] %>

@@ -24,5 +24,8 @@
 <% if @courses != [] %>
 <%= render partial: '/courses/course', collection: @courses  %>
 <% else %>
-You don't currently have any classes.
+You don't currently have any classes.  <br/>
 <% end %>
+ <br/>
+  <br/>
+See All <%= link_to "Classes", courses_path %> <br/>

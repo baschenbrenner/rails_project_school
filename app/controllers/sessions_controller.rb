@@ -4,7 +4,14 @@ class SessionsController < ApplicationController
   
   def create
     user_authenticate
-    redirect_to courses_path
+    if session[:user_type] == "student"
+      redirect_to student_path(Student.find(session[:user_id]))
+    elsif session[:user_type] == "teacher"
+      redirect_to teacher_path(Teacher.find(session[:user_id]))
+    else
+      redirect_to courses_path
+    end
+    
   end
   
   def show

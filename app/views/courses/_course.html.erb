@@ -1,6 +1,6 @@
 <ul>
   <li>
-    Course Title: <%= course.title %>
+    Course Title: <%= link_to course.title, course_path(course) %>
   </li>
   <li>
     Catalog Number: <%= course.catalog_number  %>
@@ -17,4 +17,10 @@
   <li>
     Meeting Time and Days of the Week: <%= course.meeting_schedule_string %>
   </li>
+  <ol>
+    Essential Learnings for <%= course.title %>
+    <% course.essential_learnings.each do |el| %>
+    <li><%= el.name %> - <%= el.content %></li>
+    <% end %>
+  </ol>
 </ul>

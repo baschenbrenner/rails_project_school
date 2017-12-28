@@ -11,12 +11,14 @@ class TeachersController < ApplicationController
     @teacher = Teacher.create(teacher_params)
     session[:user_type]="teacher"
     session[:user_id]= @teacher.id
+    flash[:notice]= "Sign Up Successful"
     redirect_to teacher_path(@teacher)
   end
   
   def update
     @teacher = Teacher.find(params[:id])
     @teacher.update(teacher_params)
+    flash[:notice]= "Updated Teacher Information"
     redirect_to teacher_path(@teacher)
   end
   

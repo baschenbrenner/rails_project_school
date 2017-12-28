@@ -7,6 +7,7 @@ class Course < ApplicationRecord
     has_many :comments, through: :questions
     
     
+    
     def teacher_name
         self.teacher.preferred_name
     end
