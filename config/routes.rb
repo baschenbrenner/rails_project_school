@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+  resources :questions, only: [:create]
   resources :students, only: [:show, :index]
   resources :teachers, only: [:show, :index]
 

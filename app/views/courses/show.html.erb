@@ -1,2 +1,17 @@
 <h1><%= @course.title %></h1>
 <%= render(@course) %>
+
+Ask a Question: <br/>
+<%= render partial: '/questions/ask', locals: {question: @question}%>
+
+<br/>
+<br/>
+
+
+<% if @questions != [] %>
+Previous Questions
+<br/>
+<br/>
+<%= render partial: '/questions/question', collection: @questions %>
+<% end %>
+
