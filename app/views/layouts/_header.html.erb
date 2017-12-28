@@ -1,5 +1,8 @@
 <nav class="header">
-    
+    <% if user_signed_in? %>
+    Signed In As: <%= current_user.preferred_name %>
+    <%= link_to "Logout", logout_path, method: "POST" %>
+    <% end %>
 </nav>
 
   <% if flash[:notice] %>

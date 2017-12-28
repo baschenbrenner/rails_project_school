@@ -2,4 +2,10 @@
 
 <p>Where teachers and students come to experience 21st century education</p>
 
-<%= link_to "Classes", courses_path %> 
+<%= link_to "Classes", courses_path %> <br/>
+
+<%= link_to "Log In", login_path %> <br/>
+
+<% if !user_signed_in? %>
+<% link_to "Sign Up", signup_path %>
+<% end %>

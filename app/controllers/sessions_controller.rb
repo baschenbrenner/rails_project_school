@@ -11,6 +11,8 @@ class SessionsController < ApplicationController
   end
   
   def destroy
+      session.clear
+      redirect_to root_path
   end
   
   private
@@ -19,10 +21,12 @@ class SessionsController < ApplicationController
         if params[:user_type] == "student"
             @student = Student.find_by(email: params[:email])
             return head(:forbidden) unless @student.authenticate(params[:password])
+            session[:user_type] = "student"
             session[:user_id] = @student.id 
         else
             @teacher = Teacher.find_by(email: params[:email])
             return head(:forbidden) unless @teacher.authenticate(params[:password])
+            session[:user_type] = "teacher"
             session[:user_id] = @teacher.id 
         end
   end
