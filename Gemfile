@@ -32,8 +32,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
-gem 'devise'
-gem 'devise_invitable'
+
 gem 'pry'
 
 # Use Capistrano for deployment

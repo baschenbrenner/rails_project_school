@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
     
   end
   
+   
+  
   def show
   end
   
@@ -30,12 +32,29 @@ class SessionsController < ApplicationController
             return head(:forbidden) unless @student.authenticate(params[:password])
             session[:user_type] = "student"
             session[:user_id] = @student.id 
-        else
+        elsif params[:user_type] == "teacher"
             @teacher = Teacher.find_by(email: params[:email])
             return head(:forbidden) unless @teacher.authenticate(params[:password])
             session[:user_type] = "teacher"
             session[:user_id] = @teacher.id 
+        else
+            if Student.find_by(uid: auth['uid'])
+              @student = Student.find_by(uid: auth['uid'])
+            else  
+             @student = Student.create(email: auth['info']['email'], image: auth['info']['image'], password: "password", uid: auth['uid']) 
+            end
+    
+            session[:user_type] = "student"
+            session[:user_id] = @student.id 
         end
+  end
+ 
+    
+   
+ 
+ 
+  def auth
+    request.env['omniauth.auth']
   end
     
 end
