@@ -20,13 +20,17 @@ class CoursesController < ApplicationController
   end
   
   def index
+    if session[:user_type] == "teacher"
+      @courses = current_user.courses
+    else
     @courses = Course.all
+    end
   end
   
   private 
   
   def course_params
-    params.require(:course).permit(:title, :description, :catalog_number, :room_number, :teacher_id)
+    params.require(:course).permit(:title, :description, :catalog_number, :room_number, :teacher_id, :day_time_meeting)
   end
   
 end
