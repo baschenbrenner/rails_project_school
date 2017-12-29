@@ -17,13 +17,12 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   post '/logout' => 'sessions#destroy'
   get '/signup' => 'welcome#signup', as: 'signup'
-  get '/signup/students' => 'welcome#students', as: 'new_student'
-  get '/signup/teachers' => 'welcome#teachers', as: 'new_teacher'
+  get '/signup/students' => 'welcome#new_student', as: 'new_student'
+  get '/signup/teachers' => 'welcome#new_teacher', as: 'new_teacher'
   #post '/signup/students' => 'students#create'
   #post '/signup/teachers' => 'teachers#create'
-  
+  get '/teacher/report' => 'teachers#report', as: 'student_count_report'
   get '/auth/facebook/callback' => 'sessions#create'
-  
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

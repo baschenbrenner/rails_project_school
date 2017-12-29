@@ -8,6 +8,8 @@ class Student < ApplicationRecord
     has_many :questions
     has_many :comments
     
+    validates :email, uniqueness: true
+    
     def course_ids=(array)
        if array == [""]
        else

@@ -3,6 +3,8 @@ class Question < ApplicationRecord
     belongs_to :course
     has_many :comments
     
+    validates :content, presence: true
+    
     def asked_by
         self.student.preferred_name
     end

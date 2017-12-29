@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     elsif session[:user_type] == "teacher"
       redirect_to teacher_path(Teacher.find(session[:user_id]))
     else
-      redirect_to courses_path
+      redirect_to login_path
     end
     
   end
@@ -29,14 +29,29 @@ class SessionsController < ApplicationController
   def user_authenticate
         if params[:user_type] == "student"
             @student = Student.find_by(email: params[:email])
-            return head(:forbidden) unless @student.authenticate(params[:password])
-            session[:user_type] = "student"
-            session[:user_id] = @student.id 
+            if @student
+              if @student.authenticate(params[:password])
+                session[:user_type] = "student"
+                session[:user_id] = @student.id 
+              else
+                flash[:alert] = "Incorrect password"
+              end
+            else
+              flash[:alert] = "That email could not be found"
+            end
+            
         elsif params[:user_type] == "teacher"
-            @teacher = Teacher.find_by(email: params[:email])
-            return head(:forbidden) unless @teacher.authenticate(params[:password])
-            session[:user_type] = "teacher"
-            session[:user_id] = @teacher.id 
+           
+            if @teacher = Teacher.find_by(email: params[:email])
+              if @teacher.authenticate(params[:password])
+                session[:user_type] = "teacher"
+                session[:user_id] = @teacher.id
+              else
+                flash[:alert] = "Incorrect password"
+              end
+            else
+              flash[:alert] = "That email could not be found"
+            end
         else
             if Student.find_by(uid: auth['uid'])
               @student = Student.find_by(uid: auth['uid'])

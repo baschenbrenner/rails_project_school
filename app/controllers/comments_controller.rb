@@ -7,9 +7,16 @@ class CommentsController < ApplicationController
         elsif session[:user_type] == "teacher"
             @comment.teacher = current_user
         end
-        @comment.save
-        @course = @comment.course
-        redirect_to course_path(@course)
+        if @comment.save
+            @course = @comment.course
+            redirect_to course_path(@course)
+        else
+            @comment.errors.full_messages.each do |m|
+            flash[:alert] = m
+            end
+            @course = @comment.course
+            redirect_to course_path(@course)
+        end
     end
     
     def edit

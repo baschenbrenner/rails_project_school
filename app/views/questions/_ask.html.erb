@@ -5,6 +5,7 @@
   
   <%= f.text_area :content %>
 </p>
+  <%= f.hidden_field :course_id, value: course.id %>
 
   <%= f.submit %>
 <% end %>

@@ -14,10 +14,17 @@ class TeachersController < ApplicationController
   
   def create
     @teacher = Teacher.create(teacher_params)
-    session[:user_type]="teacher"
-    session[:user_id]= @teacher.id
-    flash[:notice]= "Sign Up Successful"
-    redirect_to teacher_path(@teacher)
+    if @teacher.id
+      session[:user_type]="teacher"
+      session[:user_id]= @teacher.id
+      flash[:notice]= "Sign Up Successful"
+      redirect_to teacher_path(@teacher)
+    else
+      @teacher.errors.full_messages.each do |m|
+        flash[:alert] = m
+      end
+      render 'welcome/new_teacher'
+    end
   end
   
   def update
@@ -31,6 +38,10 @@ class TeachersController < ApplicationController
   def new_student
     check_access_teacher
     @student = Student.new
+  end
+  
+  def report
+    @teachers = Teacher.all
   end
   
   

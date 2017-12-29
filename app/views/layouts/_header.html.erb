@@ -10,8 +10,8 @@
 </nav>
 
   <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
+    <div class="notice field_with_errors"><%= flash[:notice] %></div>
   <% end %>
     <% if flash[:alert] %>
-    <div class="alert"><%= flash[:alert] %></div>
+    <div class="alert field_with_errors"><%= flash[:alert] %></div>
   <% end %>

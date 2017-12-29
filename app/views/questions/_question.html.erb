@@ -11,6 +11,8 @@ Asked by <%= question.asked_by %> <br/>
    <li><%= comment.content %> posted by <%= comment.by %> on <%= comment.at %>  </li>
    <% end %>
    
-       <%= render partial: '/comments/new', locals: {q: question, } %>
+      
 </ul>
 <% end %>
+
+ <%= render partial: '/comments/new', locals: {q: question, } %>
