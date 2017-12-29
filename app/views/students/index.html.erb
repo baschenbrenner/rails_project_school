@@ -13,3 +13,9 @@
     No Students
     <% end %>
 </table>
+
+
+<tr>
+      <th><%= student.id %></th>
+      <th><%= link_to student.full_name, student_path(student) %></th>
+</tr>

@@ -25,6 +25,19 @@ class Course < ApplicationRecord
         end
     end
     
-        
+    def self.with_most_students
+        @courses = Course.all
+        @course = Course.new
+        x=0
+        @courses.each do |c|
+            
+            if c.students.count > x
+             x = c.students.count
+             @course = c
+            end
+         end
+         @course
+    end
+    
 end
 

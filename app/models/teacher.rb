@@ -10,8 +10,12 @@ class Teacher < ApplicationRecord
     
     
     def self.student_count
-        @teachers = Teacher.all
+        @teachers = Teacher.order('preferred_name')
         @teachers.map {|t| t.students.count}
+    end
+    
+    def self.with_most_students
+        Course.with_most_students.teacher
     end
     
 end

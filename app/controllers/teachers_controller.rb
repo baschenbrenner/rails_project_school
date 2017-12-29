@@ -41,7 +41,7 @@ class TeachersController < ApplicationController
   end
   
   def report
-    @teachers = Teacher.all
+    @teachers = Teacher.order('last_name')
   end
   
   
