@@ -22,6 +22,14 @@ class CoursesController < ApplicationController
   def index
     if session[:user_type] == "teacher"
       @courses = current_user.courses
+    elsif session[:user_type] == "student"
+      if params[:teacher_id]
+      @teacher = Teacher.find(params[:teacher_id])
+      @courses = @teacher.courses
+      else
+        @courses = Course.all
+      end
+      
     else
     @courses = Course.all
     end

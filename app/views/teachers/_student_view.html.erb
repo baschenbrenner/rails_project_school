@@ -18,3 +18,5 @@
 <p> Favorite Quote: <br/>
   <%= teacher.quote %>
 </p>
+
+Click <%= link_to "here", teacher_courses_path(teacher) %> to see all the classes that <%= teacher.preferred_name %> teaches!
