@@ -3,6 +3,7 @@ class TeachersController < ApplicationController
   def show
     check_access
     @teacher = Teacher.find(params[:id])
+    @courses = @teacher.courses
   end
 
   def index

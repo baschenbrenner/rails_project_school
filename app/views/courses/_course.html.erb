@@ -9,7 +9,7 @@
     Description: <%= course.description  %>
   </li>
   <li>
-    Teacher: <%= course.teacher_name  %>
+    Teacher: <%= link_to course.teacher_name, teacher_path(course.teacher)  %>
   </li>
   <li>
     Room Number: <%= course.room_number %>

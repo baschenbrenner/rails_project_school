@@ -16,4 +16,10 @@ If this is your first time fill in the form below. You will also have a chance t
 <%= link_to "See All Courses You Are Teaching", teacher_courses_path(@teacher) %> <br/>
 <%= link_to "Create New Course", new_teacher_course_path(@teacher) %> <br/>
 Edit or Delete One of Your Courses - Make Drop Down Selection with Links to Edit Courses - Put Delete button on Edit Page
+<%= form_tag edit_teacher_course_path(@teacher, :course_id), :method => :get do %>
+<%= collection_select :course, :id, @courses, :id, :title %></div>
+  <div><%= submit_tag 'Edit Course' %></div>
+<% end %>
+
+
 <% end %>

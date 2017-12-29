@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :courses, only: [:show, :new, :index, :edit]
   end
   resources :sessions, only: [:new, :create, :destroy]
-  resources :courses, only: [:show, :index, :create, :update]
+  resources :courses, only: [:show, :index, :create, :update, :destroy]
   resources :comments, only: [:create, :edit, :update]
   root 'welcome#home', as: 'home'
   

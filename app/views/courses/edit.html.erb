@@ -13,7 +13,11 @@
     Room Number: <%= f.text_area :room_number%>
      <%= f.hidden_field :day_time_meeting, :value => "TBD" %>
   
-  
     
  <%= f.submit %>
+<% end %> <br/>
+
+<%= form_for @course, method: "delete" do |f| %>
+<%= f.submit 'Delete Course' %>
 <% end %>
+
