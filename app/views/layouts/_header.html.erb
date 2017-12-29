@@ -1,6 +1,7 @@
 <nav class="header">
     <% if user_signed_in? %>
-    Signed In: <%= current_user.email %>
+    Signed In: <%= current_user.email %> <br/>
+    <%= link_to "User Home Page", user_path %> <br/>
     <%= link_to "Logout", logout_path, method: "POST" %>
     <% else %>
     <%= link_to "Home", home_path %>

@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+  
   def show
     check_access
     @teacher = Teacher.find(params[:id])
@@ -23,6 +24,12 @@ class TeachersController < ApplicationController
     @teacher.update(teacher_params)
     flash[:notice]= "Updated Teacher Information"
     redirect_to teacher_path(@teacher)
+  end
+  
+  
+  def new_student
+    check_access_teacher
+    @student = Student.new
   end
   
   

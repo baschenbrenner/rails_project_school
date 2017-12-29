@@ -16,5 +16,13 @@ module ApplicationHelper
   def user_signed_in?
       !!session[:user_type]
   end
+  
+  def user_path
+          if session[:user_type] == "student"
+            student_path(current_user)
+          else
+            teacher_path(current_user)
+          end
+  end
     
 end

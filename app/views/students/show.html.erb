@@ -29,3 +29,15 @@ You don't currently have any classes.  <br/>
  <br/>
   <br/>
 See All <%= link_to "Classes", courses_path %> <br/>
+
+
+<h2>See All Comments</h2>
+
+<% if @comments != [] %>
+<%= render partial: '/comments/comment', collection: @comments %>
+<% else %>
+You don't currently have any comments. <br/>
+<% end %>
+
+ <br/>
+  <br/>

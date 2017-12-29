@@ -8,6 +8,18 @@ class Student < ApplicationRecord
     has_many :questions
     has_many :comments
     
+    def course_ids=(array)
+       if array == [""]
+       else
+           self.save
+           array.shift
+           array.each do |course_id|
+               self.enrollments.build(course_id: course_id).save
+           end
+       end
+    end
+    
+    
     def full_name
         "#{self.last_name}, #{self.first_name}"
     end

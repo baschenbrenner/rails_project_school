@@ -1,0 +1,20 @@
+<h1>Create a New Student </h1>
+<h2>Enrollments are Optional</h2>
+
+<%= form_for @student do |f|%>
+ Email: <br/>
+  <%= f.email_field :email %>
+  <br/>
+  Password will be automatically set as 'password'
+  <%= f.hidden_field :password, :value => 'password' %>
+  <%= f.hidden_field :password_confirmation, :value => 'password' %>
+  
+  <br/>
+  
+  Select from Any Existing Classes To Pre-Enroll Your Student <br/>
+<div class="field">
+    <%= f.collection_check_boxes :course_ids, Course.all, :id, :title %><br/>
+  </div>
+  
+ <%= f.submit %>
+<% end %>
