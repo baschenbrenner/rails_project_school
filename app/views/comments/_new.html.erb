@@ -1,0 +1,10 @@
+<%= form_for @comment do |f|%>
+        
+        <p>
+            Comment: <br/>
+           <%= f.text_area :content %>
+        </p>
+      <%= f.hidden_field :question_id, :value => q.id %>
+    
+      <%= f.submit %>
+<% end %>

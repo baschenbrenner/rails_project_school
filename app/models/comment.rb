@@ -21,5 +21,9 @@ class Comment < ApplicationRecord
         self.created_at.strftime("%m/%d/%Y at %I:%M%p")
     end
     
+    def course
+        self.question.course
+    end
+    
 end
 

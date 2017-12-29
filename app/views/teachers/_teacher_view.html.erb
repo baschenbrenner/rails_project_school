@@ -1,0 +1,23 @@
+<%= form_for teacher, url: {action: "update"} do |f|%>
+<p>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+</p>
+<p>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+</p>
+<p>
+  <%= f.label :preferred_name %>
+  <%= f.text_field :preferred_name %>
+</p>
+<p>
+  Write a bit About Yourself:
+  <%= f.text_field :bio %>
+</p>
+<p> Favorite Quote
+  <%= f.text_field :quote %>
+</p>
+
+  <%= f.submit %>
+<% end %>

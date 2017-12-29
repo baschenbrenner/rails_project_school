@@ -1,13 +1,16 @@
 Question:
 <%= question.content %>
 <br/>
-Asked by<%= question.asked_by %> <br/>
+Asked by <%= question.asked_by %> <br/>
 <%= question.asked_when %>
 
 <% if question.comments != [] %>
 
 <ul>
    <% question.comments.each do |comment|%> 
-   <%= comment.content %> posted by <%= comment.by %> on <%= comment.at %> 
+   <li><%= comment.content %> posted by <%= comment.by %> on <%= comment.at %>  </li>
+   <% end %>
+   
+       <%= render partial: '/comments/new', locals: {q: question, } %>
 </ul>
-
+<% end %>

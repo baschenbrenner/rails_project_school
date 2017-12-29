@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :teachers, only: [:show, :index, :create, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses, only: [:show, :index]
+  resources :comments, only: [:create]
   root 'welcome#home', as: 'home'
   
 

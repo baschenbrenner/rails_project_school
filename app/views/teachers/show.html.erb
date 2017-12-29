@@ -1,28 +1,10 @@
 <h1>Teacher Main Page</h1>
 
+
+<% if session[:user_type] == "student" %>
+<%= render partial: 'student_view', locals: {teacher: @teacher} %>
+<% else %>
 If this is your first time fill in the form below. You will also have a chance to edit your information later.
 <br/>
-
-<%= form_for @teacher, url: {action: "update"} do |f|%>
-<p>
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-</p>
-<p>
-  <%= f.label :last_name %>
-  <%= f.text_field :last_name %>
-</p>
-<p>
-  <%= f.label :preferred_name %>
-  <%= f.text_field :preferred_name %>
-</p>
-<p>
-  Write a bit About Yourself:
-  <%= f.text_field :bio %>
-</p>
-<p> Favorite Quote
-  <%= f.text_field :quote %>
-</p>
-
-  <%= f.submit %>
+<%= render partial: 'teacher_view', locals: {teacher: @teacher} %>
 <% end %>

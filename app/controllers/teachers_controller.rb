@@ -1,10 +1,13 @@
 class TeachersController < ApplicationController
   def show
+    check_access
     @teacher = Teacher.find(params[:id])
   end
 
   def index
+    check_access
     @teachers = Teacher.all
+    
   end
   
   def create
