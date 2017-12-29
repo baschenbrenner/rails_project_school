@@ -1,0 +1,19 @@
+<%= form_for @course do |f| %>
+
+ 
+    Course Title: 
+    <%= f.text_field :title %> 
+  
+    Catalog Number: 
+    <%= f.text_field :catalog_number %> 
+  
+    Description: <%= f.text_area :description%> 
+    <%= f.hidden_field :teacher_id, :value => current_user.id %>
+    
+    Room Number: <%= f.text_area :room_number%>
+ 
+  
+  
+    
+ <%= f.submit %>
+<% end %>
