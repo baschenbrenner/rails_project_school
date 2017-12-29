@@ -3,11 +3,14 @@ Rails.application.routes.draw do
   
   resources :questions, only: [:create]
   resources :students, only: [:show, :index, :create, :update]
-  resources :teachers, only: [:show, :index, :create, :update]
+  resources :teachers, only: [:show, :index, :create, :update] do
+    resources :courses, only: [:show, :index, :create, :edit, :update]
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses, only: [:show, :index]
   resources :comments, only: [:create, :edit, :update]
   root 'welcome#home', as: 'home'
+  
   
 
   get '/login' => 'sessions#new'
