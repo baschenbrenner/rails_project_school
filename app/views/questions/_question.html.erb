@@ -14,5 +14,6 @@ Asked by <%= question.asked_by %> <br/>
       
 </ul>
 <% end %>
-
+ <% if current_user.courses.include?(@course) %>
  <%= render partial: '/comments/new', locals: {q: question, } %>
+ <% end %>

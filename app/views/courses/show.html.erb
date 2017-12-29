@@ -1,9 +1,10 @@
 <h1><%= @course.title %></h1>
 <%= render(@course) %>
 
-<% if session[:user_type] == "student" %>
+<% if session[:user_type] == "student" && current_user.courses.include?(@course) %>
 Ask a Question: <br/>
 <%= render partial: '/questions/ask', locals: {question: @question, course: @course}%>
+
 <% end %>
 <br/>
 <br/>

@@ -35,6 +35,6 @@ Confirm:
 
  x The application is pretty DRY
  
- Limited logic in controllers
- Views use helper methods if appropriate
+ ? Limited logic in controllers - I'm going to work on refactoring this - 'limited' is subjective, but I think i have a too much logic in my controllers and I need to move some out to helpers
+ x Views use helper methods if appropriate
  x Views use partials if appropriate
