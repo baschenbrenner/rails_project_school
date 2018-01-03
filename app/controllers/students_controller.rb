@@ -11,33 +11,8 @@ class StudentsController < ApplicationController
   
   
    def create
-    if session[:user_type] == "teacher"
-      @student = Student.create(student_params)
-      
-      if @student.id
-      flash[:notice]= "Student Successfully Created"
-      redirect_to teacher_path(Teacher.find(session[:user_id]))
-      
-      else
-        @student.errors.full_messages.each do |m|
-        flash[:alert] = m
-        end
-        render 'teachers/new_student'
-      end
-    else
-      @student = Student.create(student_params)
-      if @student.id
-        session[:user_type]="student"
-        session[:user_id]= @student.id
-        flash[:notice]= "Sign Up Successful"
-        redirect_to student_path(@student)
-      else
-         @student.errors.full_messages.each do |m|
-        flash[:alert] = m
-        end
-        render 'welcome/new_student'
-      end
-    end
+     @student = Student.create(student_params)
+      user_creation
    end
   
   def update

@@ -14,17 +14,7 @@ class TeachersController < ApplicationController
   
   def create
     @teacher = Teacher.create(teacher_params)
-    if @teacher.id
-      session[:user_type]="teacher"
-      session[:user_id]= @teacher.id
-      flash[:notice]= "Sign Up Successful"
-      redirect_to teacher_path(@teacher)
-    else
-      @teacher.errors.full_messages.each do |m|
-        flash[:alert] = m
-      end
-      render 'welcome/new_teacher'
-    end
+    user_creation
   end
   
   def update

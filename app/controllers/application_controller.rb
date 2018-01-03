@@ -30,4 +30,84 @@ class ApplicationController < ActionController::Base
   def user_signed_in?
       !!session[:user_type]
   end
+  
+  
+  def user_creation
+    if !session[:user_type]
+      if @teacher
+        if @teacher.id
+          session[:user_type]="teacher"
+          session[:user_id]= @teacher.id
+          flash[:notice]= "Sign Up Successful"
+          redirect_to teacher_path(@teacher)
+        else
+          @teacher.errors.full_messages.each do |m|
+            flash[:alert] = m
+          end
+          render 'welcome/new_teacher'
+        end
+      elsif @student
+        if @student.id
+          session[:user_type]="student"
+          session[:user_id]= @student.id
+          flash[:notice]= "Sign Up Successful"
+          redirect_to student_path(@student)
+        else
+           @student.errors.full_messages.each do |m|
+          flash[:alert] = m
+          end
+          render 'welcome/new_student'
+        end
+      end
+    elsif session[:user_type] == "teacher"
+      if @student.id
+      flash[:notice]= "Student Successfully Created"
+      redirect_to teacher_path(Teacher.find(session[:user_id]))
+      
+      else
+        @student.errors.full_messages.each do |m|
+        flash[:alert] = m
+        end
+        render 'teachers/new_student'
+      end
+    end
+      
+      
+  end
+  
+  def create_comment
+    if session[:user_type] == "student"
+            @comment.student = current_user
+    elsif session[:user_type] == "teacher"
+            @comment.teacher = current_user
+    end
+    
+    if @comment.save
+            @course = @comment.course
+            redirect_to course_path(@course)
+    else
+            @comment.errors.full_messages.each do |m|
+            flash[:alert] = m
+            end
+            @course = @comment.course
+            redirect_to course_path(@course)
+    end
+  end
+      
+      
+  def determine_type_of_view
+    if session[:user_type] == "teacher"
+      @courses = current_user.courses
+    elsif session[:user_type] == "student"
+      if params[:teacher_id]
+      @teacher = Teacher.find(params[:teacher_id])
+      @courses = @teacher.courses
+      else
+        @courses = Course.all
+      end
+      
+    else
+    @courses = Course.all
+    end
+  end
 end

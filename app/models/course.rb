@@ -7,7 +7,7 @@ class Course < ApplicationRecord
     has_many :comments, through: :questions
     
     
-    
+    validates :title, presence: true
     def teacher_name
         self.teacher.preferred_name
     end
