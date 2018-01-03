@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/signup/teachers' => 'welcome#new_teacher', as: 'new_teacher'
   #post '/signup/students' => 'students#create'
   #post '/signup/teachers' => 'teachers#create'
-  get '/teacher/report' => 'teachers#report', as: 'student_count_report'
+  get '/teachers/report' => 'teachers#report', as: 'student_count_report'
   get '/auth/facebook/callback' => 'sessions#create'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

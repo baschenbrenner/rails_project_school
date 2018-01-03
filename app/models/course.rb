@@ -8,6 +8,7 @@ class Course < ApplicationRecord
     
     
     validates :title, presence: true
+    
     def teacher_name
         self.teacher.preferred_name
     end
