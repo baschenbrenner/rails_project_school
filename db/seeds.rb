@@ -6,15 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-@teacher1 = Teacher.create(first_name: "ben", preferred_name: "Mr. Ben", password: "password")
-@teacher2 = Teacher.create(first_name: "jeff", preferred_name: "Professor Friend", password: "password")
-Student.create(first_name: "kasey", last_name: "farley", password: "password")
-Student.create(first_name: "emma", password: "password")
-Student.create(first_name: "john", password: "password")
-@course1=Course.new(title: "Quantitative Reasoning", catalog_number: "MAT123 AAM", room_number: "012", day_time_meeting: "MW 9:30AM - 11:20AM")
-@course2=Course.new(title: "Anatomy and Physiology", catalog_number: "BIO105 BF2", room_number: "P32", day_time_meeting: "TR 10:30AM - 12:20PM")
-@course1.teacher = @teacher1
-@course2.teacher = @teacher2
+@teacher1 = Teacher.create(first_name: "ben", preferred_name: "Mr. Ben", email: "ben@gmail.com", password: "password")
+@teacher2 = Teacher.create(first_name: "jeff", preferred_name: "Professor Friend", email: "jeff@gmail.com:", password: "password")
+Student.create(first_name: "kasey", last_name: "farley", email: "kasey@gmail.com", password: "password")
+Student.create(first_name: "emma", email: "emma@gmail.com", password: "password")
+Student.create(first_name: "john", email: "john@gmail.com", password: "password")
+@course1= @teacher1.courses.build(title: "Quantitative Reasoning", catalog_number: "MAT123 AAM", room_number: "012", day_time_meeting: "MW 9:30AM - 11:20AM")
+@course2= @teacher2.courses.build(title: "Anatomy and Physiology", catalog_number: "BIO105 BF2", room_number: "P32", day_time_meeting: "TR 10:30AM - 12:20PM")
 @course1.save
 @course2.save
 
@@ -31,12 +29,3 @@ EssentialLearning.create(course_id: 1, name: "Social Capital", content: "Student
 Question.create(student_id: 1, course_id: 2, content: "I am confused about how to get the exponent in web works!")
 
 Comment.create(teacher_id: 1, question_id: 1, content: "You just type shift-6 which is the ^ symbol!")
-
-
-
-
-
-
-
-
-
