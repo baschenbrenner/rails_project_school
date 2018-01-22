@@ -16,7 +16,7 @@ function attachListeners() {
 
 function showCourses() {
 
-    $.get('/games').done(function(data) {
+    $.get('/courses').done(function(data) {
       // let gamesLinks = $("#games")[0].innerHTML;
       let games = data["data"];
       if (games.length > 0)
