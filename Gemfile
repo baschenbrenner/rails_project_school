@@ -34,7 +34,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'pry'
-
+gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

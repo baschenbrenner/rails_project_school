@@ -22,7 +22,8 @@ class CoursesController < ApplicationController
   def index
     respond_to do |format|
       format.html { determine_type_of_view }
-      format.json { @courses = Course.all
+      format.json {
+        @courses = Course.all
         render json: @courses, status: 200}
     end
 

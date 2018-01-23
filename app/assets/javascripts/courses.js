@@ -17,6 +17,6 @@ function attachListeners() {
 function showCourses() {
 
     $.get('/courses').done(function(data) {
-
+      
       debugger;});
 }
