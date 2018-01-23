@@ -20,14 +20,15 @@ class CoursesController < ApplicationController
   end
 
   def index
-     respond_to do |format|
-       format.html {
-          # determine_type_of_view 
-        }
-       format.json {
-    @courses = Course.all
-    render json: @courses}
-  end
+    respond_to do |format|
+        format.html {
+          # determine_type_of_view
+         }
+        format.json {
+          @courses = Course.all
+        render json: @courses}
+     end
+
 
   end
 

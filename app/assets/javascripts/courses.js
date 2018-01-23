@@ -27,7 +27,11 @@ function showCourses() {
 
 function showCoursesOnIndex() {
 
-    $.get('/courses').done(function(data) {
+    $.ajax({
+      url: '/courses',
+      method: 'get',
+      dataType: "json"
+    }).success(function(data) {
       var source   = document.getElementById("course-template").innerHTML;
       var template = Handlebars.compile(source);
       var html = template(data)
