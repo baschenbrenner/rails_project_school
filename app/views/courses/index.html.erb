@@ -1,6 +1,24 @@
 <h1>Index of Classes</h1>
 
+<p> Here you can look over all the classes and see more details on individual classes. If you are a student you can add classes to your schedule. If you are an instructor you can edit classes.
+</p>
+
 <button id="getCourses">Get Most Recent List of Courses</button>
+
+<div id="course-list"></div>
+
+
+<script id="course-template" type="text/x-handlebars-template">
+  <div id="course">
+    <h3>{{title}}</h3>
+    <p>{{description}}</p>
+    <ul>
+      <li>Catalog Number:{{catalog_number}}</li>
+      <li>Meeting Time and Day:{{day_time_meeting}}</li>
+      <li>Room Number:{{room_number}}</li>
+    </ul>
+  </div>
+</script>
 
 
 <%= render partial: '/courses/course', collection: @courses  %>
