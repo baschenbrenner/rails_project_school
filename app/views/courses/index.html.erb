@@ -17,7 +17,7 @@
       <li>Meeting Time and Day: {{day_time_meeting}}</li>
       <li>Room Number: {{room_number}}</li>
       <li> <a href="/teachers/{{teacher_id}}">Find out more about this teacher</a></li>
-
+      <%= link_to_if(user_signed_in?, "All Teachers", teachers_path) %>
     </ul>
   </div>
 </script>

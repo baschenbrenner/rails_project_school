@@ -39,11 +39,15 @@ function showCoursesOnIndex() {
       url: '/courses',
       method: 'get',
       dataType: "json"
-    }).success(function(data) {
+    })
+    .success(function(data) {
       var source   = $("#course-template").html();
       var template = Handlebars.compile(source);
       data.forEach(function(element) { html += template(element)})
       $("div#course-list").append(html);
 
+      })
+      .error(function(response) {
+        console.log("what?", response);
       });
 }

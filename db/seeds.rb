@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 @teacher1 = Teacher.create(first_name: "ben", preferred_name: "Mr. Ben", email: "ben@gmail.com", password: "password")
-@teacher2 = Teacher.create(first_name: "jeff", preferred_name: "Professor Friend", email: "jeff@gmail.com:", password: "password")
+@teacher2 = Teacher.create(first_name: "jeff", preferred_name: "Professor Friend", email: "jeff@gmail.com", password: "password")
 Student.create(first_name: "kasey", last_name: "farley", email: "kasey@gmail.com", password: "password")
 Student.create(first_name: "emma", email: "emma@gmail.com", password: "password")
 Student.create(first_name: "john", email: "john@gmail.com", password: "password")
