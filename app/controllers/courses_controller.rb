@@ -22,7 +22,7 @@ class CoursesController < ApplicationController
   def index
     respond_to do |format|
         format.html {
-          # determine_type_of_view
+          determine_type_of_view
          }
         format.json {
           @courses = Course.all

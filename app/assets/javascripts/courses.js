@@ -1,8 +1,16 @@
 $(document).ready(function() {
    attachListeners();
-
 });
 
+function Course(attributes){
+  this.id = attributes.id;
+  this.description = attributes.description;
+  this.title = attributes.title;
+  this.teacher_id = attributes.teacher_id;
+  this.catalog_number = attributes.catalog_number;
+  this.room_number = attributes.room_numbers;
+  this.day_time_meeting = attributes.day_time_meeting;
+}
 
 function attachListeners() {
   //
@@ -26,15 +34,16 @@ function showCourses() {
 }
 
 function showCoursesOnIndex() {
-
+    var html = ""
     $.ajax({
       url: '/courses',
       method: 'get',
       dataType: "json"
     }).success(function(data) {
-      var source   = document.getElementById("course-template").innerHTML;
+      var source   = $("#course-template").html();
       var template = Handlebars.compile(source);
-      var html = template(data)
+      data.forEach(function(element) { html += template(element)})
+      $("div#course-list").append(html);
 
       });
 }

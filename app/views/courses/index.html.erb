@@ -10,12 +10,14 @@
 
 <script id="course-template" type="text/x-handlebars-template">
   <div id="course">
-    <h3>{{title}}</h3>
+    <h3><a href="/courses/{{id}}">{{title}}</a></h3>
     <p>{{description}}</p>
     <ul>
-      <li>Catalog Number:{{catalog_number}}</li>
-      <li>Meeting Time and Day:{{day_time_meeting}}</li>
-      <li>Room Number:{{room_number}}</li>
+      <li>Catalog Number: {{catalog_number}}</li>
+      <li>Meeting Time and Day: {{day_time_meeting}}</li>
+      <li>Room Number: {{room_number}}</li>
+      <li> <a href="/teachers/{{teacher_id}}">Find out more about this teacher</a></li>
+
     </ul>
   </div>
 </script>
