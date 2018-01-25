@@ -1,11 +1,13 @@
 class CoursesController < ApplicationController
+
+
   def show
     check_access
     @course = Course.find(params[:id])
+    @final_course_id = Course.last.id
     @question = Question.new
     @questions = @course.questions
     @comment = Comment.new
-
   end
 
   def new
@@ -20,6 +22,7 @@ class CoursesController < ApplicationController
   end
 
   def index
+    check_access
     respond_to do |format|
         format.html {
           determine_type_of_view
@@ -28,8 +31,6 @@ class CoursesController < ApplicationController
           @courses = Course.all
         render json: @courses}
      end
-
-
   end
 
   def edit

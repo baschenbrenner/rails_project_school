@@ -1,9 +1,17 @@
-<h1>Index of Classes</h1>
 
-<p> Here you can look over all the classes and see more details on individual classes. If you are a student you can add classes to your schedule. If you are an instructor you can edit classes.
-</p>
+<% if session[:user_type] == "student" %>
+<h1>Student Schedule</h1>
+<%= render partial: '/courses/course', collection: @courses  %>
 
-<button id="getCourses">Get Most Recent List of Courses</button>
+<a href="javascript:showAllCourses()" data-role="button">Get List of All Courses</a>
+
+<% end %>
+
+<% if session[:user_type] == "teacher" %>
+<h1>Teacher Schedule</h1>
+<%= render partial: '/courses/course', collection: @courses  %>
+<% end %>
+
 
 <div id="course-list"></div>
 
@@ -21,6 +29,3 @@
     </ul>
   </div>
 </script>
-
-
-<%= render partial: '/courses/course', collection: @courses  %>

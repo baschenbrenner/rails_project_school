@@ -17,8 +17,7 @@ function attachListeners() {
   // $('td').on("click",function(){
   //   doTurn(this)
   // })
-
-  $('button#getCourses').on("click",() => showCoursesOnIndex());
+  $('button#getCourses').on("click",() => showAllCourses());
   $('a#courses').click( function(e) {e.preventDefault(); showCourses(); return false;}  );
 }
 
@@ -33,7 +32,7 @@ function showCourses() {
       });
 }
 
-function showCoursesOnIndex() {
+function showAllCourses() {
     var html = ""
     $.ajax({
       url: '/courses',
@@ -45,9 +44,8 @@ function showCoursesOnIndex() {
       var template = Handlebars.compile(source);
       data.forEach(function(element) { html += template(element)})
       $("div#course-list").append(html);
-
       })
       .error(function(response) {
-        console.log("what?", response);
+        console.log("There was a problem.", response);
       });
 }
