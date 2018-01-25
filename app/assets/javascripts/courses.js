@@ -1,6 +1,7 @@
-$(document).ready(function() {
-   attachListeners();
-});
+$(function() {
+   $('a#course').on("click", function(e) {e.preventDefault(); alert("You clicked the link!");})
+
+  });
 
 function Course(attributes){
   this.id = attributes.id;
@@ -12,23 +13,14 @@ function Course(attributes){
   this.day_time_meeting = attributes.day_time_meeting;
 }
 
-function attachListeners() {
-  //
-  // $('td').on("click",function(){
-  //   doTurn(this)
-  // })
-  $('button#getCourses').on("click",() => showAllCourses());
-  $('a#courses').click( function(e) {e.preventDefault(); showCourses(); return false;}  );
-}
 
-function showCourses() {
 
-    $.get('/courses').done(function(data) {
-      let courseList = "Course List <br/>";
-      data.forEach(function(element) {
-         courseList += `<a href="/courses/${element.id}">${element.title}</a></br>`;})
-         $('div#course-list')[0].innerHTML = courseList;
 
+
+function showCourse() {
+
+    $.get('/enrollments').done(function(data) {
+      debugger;
       });
 }
 

@@ -5,14 +5,14 @@ class Course < ApplicationRecord
     has_many :essential_learnings
     has_many :questions
     has_many :comments, through: :questions
-    
-    
+
+
     validates :title, presence: true
-    
+
     def teacher_name
-        self.teacher.preferred_name
+        "#{self.teacher.last_name}, #{self.teacher.first_name}"
     end
-    
+
     def meeting_schedule_string
         days = self.day_time_meeting.slice(0,2)
         if days == "MW"
@@ -25,13 +25,13 @@ class Course < ApplicationRecord
             string = "Error in Reading meeting times"
         end
     end
-    
+
     def self.with_most_students
         @courses = Course.all
         @course = Course.new
         x=0
         @courses.each do |c|
-            
+
             if c.students.count > x
              x = c.students.count
              @course = c
@@ -39,6 +39,5 @@ class Course < ApplicationRecord
          end
          @course
     end
-    
-end
 
+end

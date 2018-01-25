@@ -1,6 +1,6 @@
 <ul>
   <li>
-    Course Title: <%= link_to course.title, course_path(course) %>
+    Course Title: <%= link_to_if(session[:user_type] == "teacher", course.title, "javascript:showCourse()") %>
   </li>
   <li>
     Catalog Number: <%= course.catalog_number  %>
@@ -9,7 +9,13 @@
     Description: <%= course.description  %>
   </li>
   <li>
-    Teacher: <%= link_to course.teacher_name, teacher_path(course.teacher)  %>
+    Teacher:
+    <% if session[:user_type] == "student" %>
+    <%= link_to course.teacher_name, teacher_path(course.teacher)  %>
+    <% end %>
+    <% if session[:user_type] == "teacher" %>
+    <%= course.teacher_name %>
+    <% end %>
   </li>
   <li>
     Room Number: <%= course.room_number %>
@@ -24,7 +30,7 @@
     <% end %>
   </ol>
 
-  
+
 
 
 </ul>

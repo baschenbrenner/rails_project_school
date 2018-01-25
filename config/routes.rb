@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses, only: [:show, :index, :create, :update, :destroy]
   resources :comments, only: [:create, :edit, :update]
-  resources :enrollments, only: [:create]
+  resources :enrollments, only: [:create, :index]
   root 'welcome#home', as: 'home'
 
 
