@@ -19,16 +19,10 @@
 <% end %>
 
 
-<h2>Student Schedule</h2>
+<h2>Courses</h2>
 
-<% if @courses != [] %>
-<%= render partial: '/courses/course', collection: @courses  %>
-<% else %>
-You don't currently have any classes.  <br/>
-<% end %>
- <br/>
-  <br/>
- <%= link_to "See All Courses", courses_path %>
+ <%= link_to "See Your Classes", student_courses_path %>
+ <%= link_to "See All Classes", courses_path %>
 <div id="course-list"></div>
 
 <h2>See All Comments</h2>
