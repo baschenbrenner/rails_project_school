@@ -79,7 +79,10 @@ function addEnrollment(courseId, studentId) {
   $.ajax({
     url: '/enrollments',
     method: 'post',
-    data: {course_id: courseId, student_id: studentId},
+    data: { 'authenticity_token': $('input[name="authenticity_token"]')[0].value,
+    'enrollment': {course_id: courseId, student_id: studentId}
+    }
+    ,
     dataType: "json"
 
   })
@@ -94,7 +97,7 @@ function addEnrollment(courseId, studentId) {
       html += courseData.id
       html += ")'>"
       html += courseData.catalog_number
-      html += "</a></li>"
+      html += "</a></li><br/><br/>"
 
       $('#newCourses').append(html)
     })

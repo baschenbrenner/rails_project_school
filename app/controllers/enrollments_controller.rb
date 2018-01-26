@@ -1,7 +1,7 @@
 class EnrollmentsController < ApplicationController
 
     def create
-      @enrollment = Enrollment.create(course_id: params[:course_id], student_id: params[:student_id])
+      @enrollment = Enrollment.create(enrollment_params)
       render json: @enrollment
     end
 
@@ -13,7 +13,11 @@ class EnrollmentsController < ApplicationController
 
 
 
+private
 
+  def enrollment_params
+    params.require(:enrollment).permit(:course_id,:student_id)
+  end
 
 
 end

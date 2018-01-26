@@ -30,6 +30,7 @@ class CoursesController < ApplicationController
 
   def index
     check_access
+    @enrollment = Enrollment.new
     respond_to do |format|
         format.html {
           determine_type_of_view
