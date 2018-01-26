@@ -7,10 +7,10 @@
     Catalog Number:
     <%= f.text_field :catalog_number %>
 
-    Description: <%= f.text_area :description%>
+    Description: <%= f.text_field :description%>
     <%= f.hidden_field :teacher_id, :value => current_user.id %>
 
-    Room Number: <%= f.text_area :room_number%>
+    Room Number: <%= f.text_field :room_number%>
      <%= f.hidden_field :day_time_meeting, :value => "TBD" %>
 
 
@@ -24,33 +24,37 @@
 <script>
 $(function(){
   $('#new_course').on("submit", function(e){
+
     e.preventDefault();
-    data = {
-      'authenticity_token': $("input[name='authenticity_token']")[0].value,
-      'course': {
-        'title': $("input[name='course[title]']")[0].value,
-        'description': $("textarea[name='course[description]']")[0].value,
-        'teacher_id': $("input#course_teacher_id")[0].value,
-        'catalog_number': $("input[name='course[catalog_number]']")[0].value,
-        'room_number': $("textarea[name='course[room_number]']")[0].value,
-      }
-    }
+    var $form = $(this);
+    var action = $form.attr("action");
+    var params = $form.serialize();
+    // //
+    // // data = {
+    // //   'authenticity_token': $("input[name='authenticity_token']")[0].value,
+    // //   'course': {
+    // //     'title': $("input[name='course[title]']")[0].value,
+    // //     'description': $("textarea[name='course[description]']")[0].value,
+    // //     'teacher_id': $("input#course_teacher_id")[0].value,
+    // //     'catalog_number': $("input[name='course[catalog_number]']")[0].value,
+    // //     'room_number': $("textarea[name='course[room_number]']")[0].value,
+    // //   }
+    // // }
 
     $.ajax({
-      url: '/courses',
-      method: 'post',
-      data: data,
-      success: function(response){
-        var html = "<h2>Course Title: "
-        html += response.title
-        html += "</h2> <ul><li> Catalog Number: "
-        html += response.catalog_number
-        html += "</li><li> Room Number: "
-        html += response.room_number
-        html += "</li></ul>"
-        $('div#newlyCreatedCourse').append(html)}
+      url:action,
+      data:params,
+      dataType: "json",
+      method: "post"
     })
+    .success(function(json){
+
+     var newCourse = new Course(json);
+     var courseHTML = newCourse.renderHTML();
+     $('div#newlyCreatedCourse').append(courseHTML)})
+
 
   })
 })
+
 </script>
