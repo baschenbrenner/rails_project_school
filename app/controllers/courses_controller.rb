@@ -7,6 +7,13 @@ class CoursesController < ApplicationController
     @question = Question.new
     @questions = @course.questions
     @comment = Comment.new
+    respond_to do |format|
+        format.html {
+
+         }
+        format.json {
+        render json: @course}
+     end
   end
 
   def new

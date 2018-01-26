@@ -3,8 +3,9 @@
     <h2>Course Title: <%= link_to_if(session[:user_type] == "teacher", course.title, "javascript:showStudents(#{course.teacher.id},#{course.id})") %></h2>
 
   <li>
-    Catalog Number: <%= link_to_if(session[:user_type] == "student", course.catalog_number, "javascript:showCourseDetails(#{course.id})"  %>
+    Catalog Number: <%= link_to_if(session[:user_type] == "student", course.catalog_number, "javascript:showCourseDetails(#{course.id})")  %>
   </li>
+  <div id="courseDetails"></div>
   <% if session[:user_type] == "teacher" %>
   <li>
     Description: <%= course.description  %>

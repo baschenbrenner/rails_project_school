@@ -61,12 +61,13 @@ function showAllCourses() {
 }
 
 function showCourseDetails(courseId) {
-  fetch(`/courses/${courseId}`)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data){
-      let el=document.getElementById("container");
-      el.innerHTML = `<li>Description:</li>`;
-    })
+  var html = ""
+
+  $.get("/courses/" + courseId +".json", function(data) {
+      var source   = $("#student-course-template").html();
+      var template = Handlebars.compile(source);
+      html += template(data);
+      $("div#courseDetails").append(html);
+      });
+    
 }
