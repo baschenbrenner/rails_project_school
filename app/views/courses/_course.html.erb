@@ -5,7 +5,7 @@
   <li>
     Catalog Number: <%= link_to_if(session[:user_type] == "student", course.catalog_number, "javascript:showCourseDetails(#{course.id})")  %>
   </li>
-  <div id="courseDetails"></div>
+  <div id="courseDetails-<%= course.id %>"></div>
   <% if session[:user_type] == "teacher" %>
   <li>
     Description: <%= course.description  %>

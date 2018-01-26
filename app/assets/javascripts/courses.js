@@ -67,13 +67,13 @@ function showCourseDetails(courseId) {
       var source   = $("#student-course-template").html();
       var template = Handlebars.compile(source);
       html += template(data);
-      $("div#courseDetails").append(html);
+      $(`div#courseDetails-${courseId}`).append(html);
       });
 
 }
 
 function addEnrollment(courseId, studentId) {
-  debugger;
+
   $.ajax({
     url: '/enrollments',
     method: 'post',
@@ -84,7 +84,7 @@ function addEnrollment(courseId, studentId) {
   .success(function(data) {
     var html = ""
     $.get("/courses/" + data.course_id + ".json", function(courseData) {
-      debugger;
+
       html += "<h2> Course Title:"
       html += courseData.title
       html += "</h2><li> Catalog Number: "
