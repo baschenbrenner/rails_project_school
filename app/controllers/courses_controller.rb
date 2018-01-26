@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
          }
         format.json {
         render json: @course}
-        
+
       end
   end
 
@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
   def create
     check_access_teacher
     @course = Course.create(course_params)
-    redirect_to teacher_path(current_user)
+    render json: @course
   end
 
   def index
