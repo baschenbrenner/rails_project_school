@@ -1,10 +1,11 @@
 <ul>
 
     <h2>Course Title: <%= link_to_if(session[:user_type] == "teacher", course.title, "javascript:showCourse(#{course.teacher.id},#{course.id})") %></h2>
-  
+
   <li>
     Catalog Number: <%= course.catalog_number  %>
   </li>
+  <% if session[:user_type] == "teacher" %>
   <li>
     Description: <%= course.description  %>
   </li>
@@ -27,6 +28,7 @@
     Essential Learnings for <%= course.title %>
     <% course.essential_learnings.each do |el| %>
     <li><%= el.name %> - <%= el.content %></li>
+    <% end %>
     <% end %>
   </ol>
 
