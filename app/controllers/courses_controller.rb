@@ -4,7 +4,6 @@ class CoursesController < ApplicationController
   def show
     check_access
     @course = Course.find(params[:id])
-    @final_course_id = Course.last.id
     @question = Question.new
     @questions = @course.questions
     @comment = Comment.new

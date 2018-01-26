@@ -5,7 +5,7 @@ Specs:
 
 
  Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
-   - the student schedule page should have a summary of courses that have signed up for. Each course should have a link where the student can click and see more information about the courses
+   - the student schedule page should have a summary of courses that students have signed up for. Each course should have a link where the student can click and see more information about the courses
 
    - the main schedule page should have a summary of courses and should allow students to click and see details of the courses and then add a course to their schedule.  
 
@@ -26,7 +26,7 @@ Specs:
  - I will use the create course page as an opportunity to create JS model objects. I have to go back watch the protoype video to see what that is all about
 
  At least one of the js model objects must have at least one method added by your code to the prototype.
- 
+
 Confirm
 
  You have a large number of small Git commits

@@ -17,7 +17,7 @@ function Course(attributes){
 
 
 
-function showCourse(teacherId, courseId) {
+function showStudents(teacherId, courseId) {
 
 
       enrollment_url = "/teachers/" + teacherId + "/courses/" + courseId + "/enrollments"
@@ -58,4 +58,15 @@ function showAllCourses() {
       .error(function(response) {
         console.log("There was a problem.", response);
       });
+}
+
+function showCourseDetails(courseId) {
+  fetch(`/courses/${courseId}`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data){
+      let el=document.getElementById("container");
+      el.innerHTML = `<li>Description:</li>`;
+    })
 }
