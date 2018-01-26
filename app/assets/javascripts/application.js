@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require_tree .
 //= require courses
+//= require enrollments
 //= require handlebars.min

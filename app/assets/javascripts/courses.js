@@ -69,5 +69,9 @@ function showCourseDetails(courseId) {
       html += template(data);
       $("div#courseDetails").append(html);
       });
-    
+
+}
+
+function addEnrollment(courseId,studentId) {
+  debugger;
 }
