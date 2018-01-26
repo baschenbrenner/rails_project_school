@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :null_session
 
   def check_access
     if !session[:user_type]
@@ -96,7 +96,7 @@ class ApplicationController < ActionController::Base
 
 
   def determine_type_of_view
-    if session[:user_type] 
+    if session[:user_type]
         @courses = current_user.courses
     else
         @courses = Course.all
