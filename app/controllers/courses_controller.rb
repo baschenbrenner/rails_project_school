@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
 
          }
         format.json {
-        render json: @course}
+        render json: @course.to_json(only: [:description, :room_number, :day_time_meeting], include: [essential_learnings: {only: [:name, :content]}])}
      end
   end
 

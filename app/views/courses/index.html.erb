@@ -63,5 +63,13 @@
       <li>Meeting Time and Day: {{day_time_meeting}}</li>
       <li>Room Number: {{room_number}}</li>
     </ul>
+    <h4>Essential Learnings</h4>
+    <div id="essential_learnings">
+      {{#each essential_learnings}}
+      <ol>
+        <li>{{name}}: {{content}}</li>
+      </ol>
+      {{/each}}
+    </div>
   </div>
 </script>
