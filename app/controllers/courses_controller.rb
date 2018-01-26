@@ -24,7 +24,7 @@ class CoursesController < ApplicationController
 
   def create
     check_access_teacher
-    @course = Course.new(course_params)
+    @course = Course.create(course_params)
     respond_to do |format|
       format.json {
          render json: @course}
