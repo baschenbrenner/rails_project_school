@@ -4,9 +4,9 @@ class EnrollmentsController < ApplicationController
     end
 
     def index
-      binding.pry
-      @enrollments = Enrollment.all
-      render json: @enrollments
+      @enrollments = Enrollment.where(course_id: params[:course_id])
+      @students = @enrollments.map {|el| el.student}
+      render json: @students
     end
 
 

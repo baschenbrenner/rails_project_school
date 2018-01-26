@@ -1,6 +1,25 @@
 
+    <style>
+      .flexbox-container {
+        display: -ms-flex;
+        display: -webkit-flex;
+        display: flex;
+      }
+      .flexbox-container > div {
+        width: 50%;
+        padding: 10px;
+      }
+      .flexbox-container > div:first-child {
+        margin-right: 20px;
+      }
+    </style>
+
+
+
+
 <% if session[:user_type] == "student" %>
 <h1>Student Schedule</h1>
+
 <%= render partial: '/courses/course', collection: @courses  %>
 
 <a href="javascript:showAllCourses()" data-role="button">Get List of All Courses</a>
@@ -9,7 +28,15 @@
 
 <% if session[:user_type] == "teacher" %>
 <h1>Teacher Schedule</h1>
-<%= render partial: '/courses/course', collection: @courses  %>
+<div class="flexbox-container">
+  <div>
+    <%= render partial: '/courses/course', collection: @courses  %>
+  </div>
+  <div>
+    <h3>Student List</h3>
+    <div id="studentList"></div>
+  </div>
+</div>
 <% end %>
 
 

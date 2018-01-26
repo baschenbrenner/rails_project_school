@@ -1,7 +1,7 @@
 <ul>
-  <li>
-    Course Title: <%= link_to_if(session[:user_type] == "teacher", course.title, "javascript:showCourse()") %>
-  </li>
+
+    <h2>Course Title: <%= link_to_if(session[:user_type] == "teacher", course.title, "javascript:showCourse(#{course.teacher.id},#{course.id})") %></h2>
+  
   <li>
     Catalog Number: <%= course.catalog_number  %>
   </li>
