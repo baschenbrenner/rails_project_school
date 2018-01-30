@@ -14,7 +14,8 @@ class Course < ApplicationRecord
     end
 
     def meeting_schedule_string
-        days = self.day_time_meeting.slice(0,2)
+
+        days = self.day_time_meeting && self.day_time_meeting.slice(0,2)
         if days == "MW"
             string = "Monday and Wednesday at #{day_time_meeting.slice(3,18)}"
         elsif days == "TR"
@@ -24,6 +25,8 @@ class Course < ApplicationRecord
         else
             string = "Error in Reading meeting times"
         end
+        
+
     end
 
     def self.with_most_students

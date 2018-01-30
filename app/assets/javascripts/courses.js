@@ -1,8 +1,4 @@
 var randomVar = "hello"
-$(function() {
-   $('a#course').on("click", function(e) {e.preventDefault(); alert("You clicked the link!");})
-
-  });
 
 function Course(attributes){
   this.id = attributes.id;
@@ -10,7 +6,7 @@ function Course(attributes){
   this.title = attributes.title;
   this.teacher_id = attributes.teacher_id;
   this.catalog_number = attributes.catalog_number;
-  this.room_number = attributes.room_numbers;
+  this.room_number = attributes.room_number;
   this.day_time_meeting = attributes.day_time_meeting;
 }
 
@@ -25,7 +21,18 @@ html += "</li></ul>"
 return html
 }
 
+$(document).on("turbolinks:load", function(e) {
+  $('button#showAllCourses').on("click", function(e) {e.preventDefault(); showAllCourses();});
+})
+$(document).on("turbolinks:load", function(e) {
+  $('#new_course').on("submit", function(e){
+    e.preventDefault();
+    var $form = $(this);
+    var action = $form.attr("action");
+    var params = $form.serialize();
+     newCourse(action,params);})
 
+})
 
 function showStudents(teacherId, courseId) {
 
@@ -53,6 +60,7 @@ function showStudents(teacherId, courseId) {
 }
 
 function showAllCourses() {
+    $("div#course-list")[0].innerHTML =""
     var html = ""
     $.ajax({
       url: '/courses',
@@ -81,3 +89,26 @@ function showCourseDetails(courseId) {
       });
 
 }
+
+
+
+function newCourse(action, params) {
+
+
+    $.ajax({
+      url:action,
+      data:params,
+      dataType: "json",
+      method: "post"
+    })
+    .success(function(json){
+     var newCourse = new Course(json);
+     var courseHTML = newCourse.renderHTML();
+     $('div#newlyCreatedCourse').append(courseHTML)})
+
+  }
+
+
+
+
+// fetch("/courses" + courseId + ".json")

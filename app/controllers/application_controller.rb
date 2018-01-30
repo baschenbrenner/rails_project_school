@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  def authenticate_user
+    redirect_to home_path unless current_user
+  end
+  
   def check_access
     if !session[:user_type]
       flash[:alert] = "You do not have access to that page"

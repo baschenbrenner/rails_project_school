@@ -23,6 +23,7 @@ class CoursesController < ApplicationController
   end
 
   def create
+    
     check_access_teacher
     @course = Course.create(course_params)
     respond_to do |format|

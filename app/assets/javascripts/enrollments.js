@@ -1,11 +1,11 @@
 
-function addEnrollment(courseId, studentId) {
+function addEnrollment(courseId) {
 
   $.ajax({
     url: '/enrollments',
     method: 'post',
     data: { 'authenticity_token': $('input[name="authenticity_token"]')[0].value,
-    'enrollment': {course_id: courseId, student_id: studentId}
+    'enrollment': {course_id: courseId}
     }
     ,
     dataType: "json"

@@ -22,7 +22,8 @@
 
 <%= render partial: '/courses/course', collection: @courses  %>
 <div id="newCourses"></div>
-<a href="javascript:showAllCourses()" data-role="button">Get List of All Courses</a>
+<button id="showAllCourses" >Show All Courses</button>
+<!-- <a href="javascript:showAllCourses()" data-role="button">Get List of All Courses</a> -->
 <%= form_for @enrollment do |f| %>
 <% end %>
 
@@ -54,8 +55,8 @@
       <li>Meeting Time and Day: {{day_time_meeting}}</li>
       <li>Room Number: {{room_number}}</li>
       <li> <a href="/teachers/{{teacher_id}}">Find out more about who is teaching this class</a></li>
+      <a href="javascript:addEnrollment({{id}})" data-role="button">Add Class To Schedule</a>
 
-      <a href="javascript:addEnrollment({{id}},<%= session[:user_id] %>)" data-role="button">Add Class To Schedule</a>
     </ul>
   </div>
 </script>
